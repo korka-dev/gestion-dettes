@@ -42,3 +42,17 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés sur 
 
    ```bash
    git clone https://github.com/korka-dev/gestion-dettes.git
+
+   cd cd gestion-dettes
+   
+2.**installation des paquets**:
+
+   ```bash
+         npm install
+
+
+
+
+
+
+
