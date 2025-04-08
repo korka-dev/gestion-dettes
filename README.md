@@ -45,14 +45,9 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés sur 
 
    cd cd gestion-dettes
    
-2.**installation des paquets**:
+2.**Installation des paquets et lancement du projet**:
 
    ```bash
          npm install
 
-
-
-
-
-
-
+         npm run dev
