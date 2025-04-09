@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { UserPlus } from 'lucide-react';
 
+const API_URL = 'http://localhost:5000';
+
 const AddClient = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -15,7 +17,7 @@ const AddClient = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch('/api/clients', {
+      const response = await fetch(`${API_URL}/api/clients`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

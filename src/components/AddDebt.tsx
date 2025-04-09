@@ -3,6 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { CreditCard } from 'lucide-react';
 
+const API_URL = 'http://localhost:5000';
+
 const AddDebt = () => {
   const { clientId } = useParams();
   const navigate = useNavigate();
@@ -12,7 +14,7 @@ const AddDebt = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch(`/api/clients/${clientId}/debts`, {
+      const response = await fetch(`${API_URL}/api/clients/${clientId}/debts`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

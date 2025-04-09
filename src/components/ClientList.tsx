@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { Users, Plus, Check } from 'lucide-react';
+
+// Définir l'URL du backend local
+const API_URL = 'http://localhost:5000';
 
 interface Client {
   _id: string;
@@ -12,7 +15,7 @@ interface Client {
   debts: Array<{
     _id: string;
     amount: number;
-    productName: string; // Ajout du champ productName
+    productName: string;
     paid: boolean;
     date: string;
   }>;
@@ -21,13 +24,15 @@ interface Client {
 const ClientList = () => {
   const [clients, setClients] = useState<Client[]>([]);
 
+  // Utiliser useEffect pour charger les clients lors du montage du composant
   useEffect(() => {
     fetchClients();
   }, []);
 
+  // Fonction pour récupérer la liste des clients depuis l'API
   const fetchClients = async () => {
     try {
-      const response = await fetch('/api/clients');
+      const response = await fetch(`${API_URL}/api/clients`);
       if (response.ok) {
         const data = await response.json();
         setClients(data);
@@ -37,9 +42,10 @@ const ClientList = () => {
     }
   };
 
+  // Fonction pour marquer une dette comme payée
   const handlePayDebt = async (clientId: string, debtId: string) => {
     try {
-      const response = await fetch(`/api/clients/${clientId}/debts/${debtId}/pay`, {
+      const response = await fetch(`${API_URL}/api/clients/${clientId}/debts/${debtId}/pay`, {
         method: 'PUT'
       });
 
